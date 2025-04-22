@@ -1,7 +1,11 @@
 [versions]
 libaec = "5.8.0-SNAPSHOT"
 junit = "5.13.0-M2"
+logback = "1.5.18"
 
 [libraries]
 libaec-jna = { group = "edu.ucar", name = "libaec-jna", version.ref = "libaec" }
 libaec-native = { group = "edu.ucar", name = "libaec-native", version.ref = "libaec" }
+
+# testing
+logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }

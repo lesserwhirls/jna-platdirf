@@ -11,6 +11,8 @@ repositories {
 dependencies {
     implementation(libs.libaec.jna)
     runtimeOnly(libs.libaec.native)
+
+    testRuntimeOnly(libs.logback.classic)
 }
 
 testing {
