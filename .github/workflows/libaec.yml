@@ -34,3 +34,8 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Run JNA tests
         run: ./gradlew clean test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: JUnit_Results_${{ github.sha }}_-${{ matrix.os }}
+          path: build/reports/tests
