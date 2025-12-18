@@ -11,10 +11,7 @@ jobs:
 
       matrix:
         build_env: [
-          {os: ubuntu-24.04, c_compiler: gcc, lib: 'blosc/libblosc2.so', jna_id: 'linux-x86-64'},
-          {os: ubuntu-24.04-arm, c_compiler: gcc, lib: 'blosc/libblosc2.so', jna_id: 'linux-aarch64'},
-          {os: macos-14, c_compiler: clang, lib: 'blosc/libblosc2.dylib', jna_id: 'darwin-aarch64'},
-          {os: macos-15-intel, c_compiler: clang, lib: 'blosc/libblosc2.dylib', jna_id: 'darwin-x86-64'},
+          {os: windows-2022, c_compiler: cl, lib: 'src\\Release\\blosc2.dll', jna_id: 'win32-x86-64'},
         ]
         build_type: [Release]
 
@@ -26,12 +23,11 @@ jobs:
         shell: bash
         run: |
           echo "build-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
-          echo "blosc2-version=2.22.0" >> "$GITHUB_OUTPUT"
 
       - uses: actions/checkout@v4
         with:
           repository: 'Blosc/c-blosc2'
-          ref: "v${{ steps.strings.outputs.blosc2-version }}"
+          ref: "v2.22.0"
 
       - name: Configure CMake
         run: >
@@ -82,5 +78,5 @@ jobs:
       - name: Upload merged artifact
         uses: actions/upload-artifact@v4
         with:
-          name: libblosc2-native-${{ steps.strings.outputs.blosc2-version }}-${{ github.sha }}
+          name: libblosc2-native-2.22.0-${{ github.sha }}
           path: native/
