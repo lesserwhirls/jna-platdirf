@@ -51,7 +51,8 @@ jobs:
           mkdir resources/${{ matrix.build_env.jna_id }}
           cp ../LICENSE.txt resources/${{ matrix.build_env.jna_id }}/libblosc2-LICENSE.txt
           cp -r ../LICENSES resources/${{ matrix.build_env.jna_id }}/
-          ls -la ${{ matrix.build_env.lib }}*
+          ls -la
+          ls -la blosc/
           cp -L ${{ matrix.build_env.lib }} resources/${{ matrix.build_env.jna_id }}
 
       - name: Upload ${{ matrix.build_env.jna_id }} artifact
