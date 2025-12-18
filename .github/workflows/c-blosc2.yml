@@ -11,7 +11,7 @@ jobs:
 
       matrix:
         build_env: [
-          {os: windows-2022, c_compiler: cl, lib: 'src\\Release\\blosc2.dll', jna_id: 'win32-x86-64'},
+          {os: windows-2022, c_compiler: cl, lib: 'blosc\\Release\\blosc2.dll', jna_id: 'win32-x86-64'},
         ]
         build_type: [Release]
 
@@ -52,7 +52,7 @@ jobs:
           cp ../LICENSE.txt resources/${{ matrix.build_env.jna_id }}/libblosc2-LICENSE.txt
           cp -r ../LICENSES resources/${{ matrix.build_env.jna_id }}/
           ls -la
-          ls -la blosc/
+          ls -la blosc/Release/
           cp -L ${{ matrix.build_env.lib }} resources/${{ matrix.build_env.jna_id }}
 
       - name: Upload ${{ matrix.build_env.jna_id }} artifact
