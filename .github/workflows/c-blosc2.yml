@@ -1,7 +1,6 @@
 name: C-Blosc2 build using CMake on multiple platforms
 
 on:
-  pull_request:
   workflow_dispatch:
 
 jobs:
